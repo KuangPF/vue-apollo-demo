@@ -2,14 +2,16 @@ const express = require('express');
 const { ApolloServer, gql } = require('apollo-server-express');
 
 const books = [{
-  title: 'Harry Potter and the Chamber of Secrets',
-  author: 'J.K. Rowling',
-},
-{
-  title: 'Jurassic Park',
-  author: 'Michael Crichton',
-},
+    title: 'Harry Potter and the Chamber of Secrets',
+    author: 'J.K. Rowling',
+  },
+  {
+    title: 'Jurassic Park',
+    author: 'Michael Crichton',
+  },
 ];
+
+
 const typeDefs = gql `
 type Book {
   title: String
@@ -17,14 +19,17 @@ type Book {
 }
 type Query {
   books: [Book]
-  hello: String
+  ping(message: String!): String
 }
 `;
 
 const resolvers = {
-Query: {
-  books: () => books,
-},
+  Query: {
+    books: () => books,
+    ping(root, { message }, context) {
+      return `Answering ${message}`
+    },
+  },
 };
 
 const server = new ApolloServer({ typeDefs, resolvers });
