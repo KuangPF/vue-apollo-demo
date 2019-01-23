@@ -8,6 +8,7 @@
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "apollo-server": "node apollo-server/index.js",
+    "apollo-server-express": "node apollo-server/apollo-server-express.js",
     "build": "node build/build.js"
   },
   "dependencies": {
