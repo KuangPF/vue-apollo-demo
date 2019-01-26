@@ -1,0 +1,6 @@
+query tagsQuery ($id:String, $label: String) {
+  tags(id: $id,label:$label) {
+    id
+    label
+  }
+}

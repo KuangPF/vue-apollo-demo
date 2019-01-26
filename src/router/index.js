@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import HelloVueApollo from '@/components/HelloVueApollo'
+import VueApolloMutate from '@/components/VueApolloMutate'
 
 Vue.use(Router)
 
@@ -16,6 +17,11 @@ export default new Router({
       path: '/vue-apollo',
       name: 'HelloVueApollo',
       component: HelloVueApollo
+    },
+    {
+      path: '/vue-apollo-mutate',
+      name: 'VueApolloMutate',
+      component: VueApolloMutate
     }
   ]
 })

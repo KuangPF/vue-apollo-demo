@@ -2,8 +2,7 @@ const express = require('express')
 const { ApolloServer, gql } = require('apollo-server-express')
 const casual = require('casual')
 
-const books = [
-  {
+const books = [{
     title: 'Harry Potter and the Chamber of Secrets',
     author: 'J.K. Rowling'
   },
@@ -13,7 +12,7 @@ const books = [
   }
 ]
 
-const typeDefs = gql`
+const typeDefs = gql `
   type Book {
     title: String
     author: String
@@ -21,6 +20,10 @@ const typeDefs = gql`
   type Tag {
     id: Int
     label: String
+  }
+
+  type Mutation {
+    addTag(label: String!): Tag
   }
   type Query {
     books: [Book]
@@ -32,7 +35,7 @@ const typeDefs = gql`
 // 生成一些标签
 var id = 0
 var tags = []
-for (let i = 0; i < 9; i++) {
+for (let i = 0; i < 5; i++) {
   addTag(casual.word)
 }
 
@@ -53,7 +56,13 @@ const resolvers = {
     tags(root, args, context) {
       return tags
     }
-  }
+  },
+  Mutation: {
+    addTag(root, { label }, context) {
+      console.log(`adding tag '${label}'`)
+      return addTag(label)
+    },
+  },
 }
 
 const server = new ApolloServer({ typeDefs, resolvers })
