@@ -59,7 +59,6 @@ const resolvers = {
   },
   Mutation: {
     addTag(root, { label }, context) {
-      console.log(`adding tag '${label}'`)
       return addTag(label)
     },
   },

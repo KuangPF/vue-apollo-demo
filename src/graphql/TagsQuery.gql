@@ -1,5 +1,5 @@
-query tagsQuery ($id:String, $label: String) {
-  tags(id: $id,label:$label) {
+query tagsQuery {
+  tags {
     id
     label
   }

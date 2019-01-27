@@ -33,13 +33,6 @@ export default {
   },
   methods: {
     addTag() {
-      console.log(gql`query tagList {
-      tags {
-        id,
-        label
-      }
-    }`)
-    console.log(TAGS_QUERY)
       // 保存用户输入以防止错误
       const newTag = this.newTag
       // 将其清除以尽早更新用户页面
@@ -57,13 +50,27 @@ export default {
         variables: {
           label: newTag,
         },
-         update: (store, { data: { addTag } }) => {
-           const data = store.readQuery({ query: TAGS_QUERY })
-           console.log(data)
-         }
-      }).then(data=> {
+        update: (store, { data: { addTag } }) => {
+          // 从缓存中读取这个查询的数据
+          const data = store.readQuery({ query: TAGS_QUERY })
+          data.tags.push(addTag)
+          // 将数据写回缓存
+          store.writeQuery({ query: TAGS_QUERY, data })
+          console.log(data)
+        },
+        // 乐观 UI
+        // 将在请求产生时作为“假”结果，使用户界面能够快速更新
+        optimisticResponse: {
+          __typename: 'Mutation',
+          addTag: {
+            __typename: 'Tag',
+            id: -1,
+            label: newTag,
+          },
+        }
+      }).then(data => {
         // console.log(data)
-      }).catch(err=> {
+      }).catch(err => {
         // console.log(err)
         this.newTag = newTag
       })
