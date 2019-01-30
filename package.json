@@ -9,6 +9,7 @@
     "start": "npm run dev",
     "apollo-server": "node apollo-server/index.js",
     "apollo-server-express": "node apollo-server/apollo-server-express.js",
+    "apollo-server-ws": "nodemon apollo-server/apollo-server-ws.js --exec babel-node --presets es2015,stage-0",
     "build": "node build/build.js"
   },
   "dependencies": {
@@ -20,15 +21,20 @@
     "apollo-server": "^2.3.1",
     "apollo-server-express": "^2.3.1",
     "apollo-utilities": "^1.1.2",
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "body-parser": "^1.18.3",
     "casual": "^1.6.0",
     "express": "^4.16.4",
-    "graphql": "^14.1.1",
+    "graphql": "^0.10.1",
     "graphql-subscriptions": "^1.0.0",
     "graphql-tag": "^2.10.1",
     "http": "^0.0.0",
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "lodash": "^4.16.6",
+    "faker": "^4.1.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
