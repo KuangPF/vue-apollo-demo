@@ -5,7 +5,7 @@ import faker from 'faker';
 // Let's generate some tags
 var id = 0;
 var tags = [];
-for (let i = 0; i < 42; i++) {
+for (let i = 0; i < 10; i++) {
   if(Math.random() < .5) {
     addTag('City', faker.address.city());
   } else {
