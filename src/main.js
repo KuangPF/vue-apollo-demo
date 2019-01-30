@@ -21,7 +21,7 @@ const httpLink = new HttpLink({
 
 // 创建订阅的 websocket 连接
 const wsLink = new WebSocketLink({
-  uri: 'ws://localhost:3000/subscriptions',
+  uri: 'ws://localhost:4000/subscriptions',
   options: {
     reconnect: true,
   },

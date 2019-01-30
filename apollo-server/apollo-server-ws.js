@@ -10,7 +10,7 @@ import { SubscriptionServer } from 'subscriptions-transport-ws';
 
 import schema from './schema';
 
-const PORT = 3020;
+const PORT = 4000;
 const SUBSCRIPTIONS_PATH = '/subscriptions';
 
 var app = express();
